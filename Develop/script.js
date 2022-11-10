@@ -1,6 +1,5 @@
 // Assignment code here
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -26,3 +25,66 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+function generatePassword() {
+  var result = "";
+  var passwordLength = 0;
+  var UpperCase;
+  var LowerCase;
+  var Number;
+  var Character;
+
+  passwordLength = 0;
+  pwdCriteria.pwdLength = 0;
+  result = "";
+
+  while (passwordLength < 8 || passwordLength > 128) {
+    passwordLength = prompt("How many characters do you want your password to be? /nPassword must be between 8 and 128 characters.");
+
+    if(passwordLength === null) {
+      return "Your secure password";
+    }
+    else {
+      if (!isFinite(passwordLength)) {
+        alert("You did not enter a number")
+        return "Your secure password"
+      }
+      else {
+        if (passwordLength < 8 || passwordLength > 128) {
+          alert("Password must be between 8 and 128 characters.");
+          return "Your secure password";
+        }
+        else {
+          showPrompts();
+
+          while (pwdCriteria.pwdLength < passwordLength) {
+            if (LowerCase === false && UpperCase === false && Number === false && Character === false) {
+              alert("You must select at least one criteria of lowercase, uppercase, numbers or special characters")
+              showPrompts()
+            }
+            else {
+              if (LowerCase === true && pwdCriteria.pwdLength < passwordLength) {
+                var lc = pwdCriteria.pwdLowerCase[Math.floor(Math.random() * 26)]
+                result = result + lc;
+                pwdCriteria.pwdLength++;
+              }
+
+              if (Character === true && pwdCriteria.pwdLength < passwordLength) {
+                var sc = pwdCriteria.pwdCharacter[Math.floor(Math.random() * 32)]
+                result = result + sc;
+                pwdCriteria.pwdLength++;
+              }
+              if (UpperCase === true && pwdCriteria.pwdLength < passwordLength) {
+                var uc = pwdCriteria.pwdUpperCase[Math.floor(Math.random() * 26)]
+                result = result + uc;
+                pwdCriteria.pwdLength++;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
