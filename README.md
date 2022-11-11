@@ -12,7 +12,7 @@ N/A
 
 To use this password generator, follow this link: (https://colint771.github.io/Password-Generator/)
 
-![My Image](password-generator-SS Medium.jpeg)
+![img](./password-generator-SS Medium.jpeg)
 
 ## Credits
 
